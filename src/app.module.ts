@@ -3,10 +3,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProductsModule } from './products/products.module';
 import { SalesModule } from './sales/sales.module';
 import { PurchasesModule } from './purchases/purchases.module';
-import { UsersModule } from './users/users.module';
-import { Users } from './users/users.entity';
 import { Products } from './products/products.entity';
-import { Sales } from './sales/sales.entity';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './users/users.module';
+import { AppController } from './app.controller';
+import Sales from './sales/sales.entity';
 
 @Module({
   imports: [
@@ -17,13 +18,15 @@ import { Sales } from './sales/sales.entity';
       username: 'root',
       // password: 'root',
       database: 'inventory',
-      entities: [Users, Products, Sales],
+      entities: [Products, Sales],
       synchronize: true,
     }),
     ProductsModule,
     SalesModule,
     PurchasesModule,
+    AuthModule,
     UsersModule,
   ],
+  controllers: [AppController],
 })
 export class AppModule {}

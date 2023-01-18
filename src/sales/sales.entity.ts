@@ -14,7 +14,7 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class Sales {
+export default class Sales {
   @PrimaryGeneratedColumn()
   id: number;
 
