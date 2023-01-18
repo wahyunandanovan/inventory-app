@@ -1,41 +1,38 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Sales } from 'src/sales/sales.entity';
 import {
   Entity,
   Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
+  OneToMany,
+  JoinColumn,
 } from 'typeorm';
 
 @Entity()
-export class Users {
+export class Products {
   @PrimaryGeneratedColumn()
   id: number;
 
   @ApiProperty()
-  @CreateDateColumn({
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP(6)',
-  })
+  @CreateDateColumn()
   public created_at: Date;
 
   @ApiProperty()
-  @UpdateDateColumn({
-    type: 'timestamp',
-    default: () => 'CURRENT_TIMESTAMP(6)',
-    onUpdate: 'CURRENT_TIMESTAMP(6)',
-  })
+  @UpdateDateColumn()
   public updated_at: Date;
 
   @ApiProperty()
   @Column()
-  firstName: string;
+  name: string;
 
   @ApiProperty()
-  @Column()
-  lastName: string;
+  @Column({ nullable: true })
+  image: string;
 
   @ApiProperty()
-  @Column({ default: true, nullable: true })
-  isActive: boolean;
+  @Column({ nullable: true })
+  description: string;
 }

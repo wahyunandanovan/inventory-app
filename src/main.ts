@@ -5,10 +5,24 @@ import { ValidationPipe } from '@nestjs/common/pipes';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.useGlobalPipes(new ValidationPipe())
+
+  app.useGlobalPipes(new ValidationPipe({ forbidUnknownValues: false }));
+
+  app.useGlobalPipes(
+    new ValidationPipe({
+      validatorPackage: require('@nestjs/class-validator'),
+      transformerPackage: require('class-transformer'),
+      //whitelist: true,
+      forbidUnknownValues: false,
+      forbidNonWhitelisted: true,
+      transformOptions: {
+        enableImplicitConversion: true,
+      },
+    }),
+  );
 
   const config = new DocumentBuilder()
-    .setTitle('Docs Api')
+    .setTitle('Inventory Docs Api')
     .setDescription('Author : wahyunandanovan@gmail.com')
     .setVersion('1.0')
     .build();
