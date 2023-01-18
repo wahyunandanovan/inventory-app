@@ -5,8 +5,8 @@ import { SalesModule } from './sales/sales.module';
 import { PurchasesModule } from './purchases/purchases.module';
 import { Products } from './products/products.entity';
 import { AuthModule } from './auth/auth.module';
-import { UsersModule } from './users/users.module';
 import { AppController } from './app.controller';
+import { UsersModule } from './users/users.module';
 import Sales from './sales/sales.entity';
 
 @Module({
