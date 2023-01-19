@@ -8,6 +8,7 @@ import { AuthModule } from './auth/auth.module';
 import { AppController } from './app.controller';
 import { UsersModule } from './users/users.module';
 import Sales from './sales/sales.entity';
+import { Users } from './users/user.entity';
 
 @Module({
   imports: [
@@ -18,14 +19,13 @@ import Sales from './sales/sales.entity';
       username: 'root',
       // password: 'root',
       database: 'inventory',
-      entities: [Products, Sales],
+      entities: [Users, Products, Sales],
       synchronize: true,
     }),
     ProductsModule,
     SalesModule,
     PurchasesModule,
     AuthModule,
-    UsersModule,
   ],
   controllers: [AppController],
 })
